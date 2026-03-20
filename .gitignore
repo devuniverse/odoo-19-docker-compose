@@ -1,1 +1,3 @@
 .idea/
+etc/odoo-server.log
+etc/sessions/

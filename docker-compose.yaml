@@ -35,12 +35,18 @@ services:
       - "8072:8072"             # longpolling (optional)
     volumes:
       - odoo-web-data:/var/lib/odoo
+      #- /etc/timezone:/etc/timezone:ro
+      #- /etc/localtime:/etc/localtime:ro
+#      - ./entrypoint.sh:/entrypoint.sh
+      - ./addons:/mnt/extra-addons
     networks:
       - odoo-net
 
 volumes:
   odoo-web-data:
   odoo-db-data:
+  addons:
+  etc:
 networks:
   odoo-net:
     driver: bridge
