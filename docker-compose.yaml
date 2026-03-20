@@ -19,6 +19,7 @@ services:
 
   odoo:
     image: odoo:19.0
+    command: ["odoo", "--proxy-mode"]
     depends_on:
       - db
     restart: always
@@ -39,6 +40,7 @@ services:
       #- /etc/localtime:/etc/localtime:ro
 #      - ./entrypoint.sh:/entrypoint.sh
       - ./addons:/mnt/extra-addons
+      - ./config:/etc/odoo
     networks:
       - odoo-net
 
@@ -46,7 +48,7 @@ volumes:
   odoo-web-data:
   odoo-db-data:
   addons:
-  etc:
+  config:
 networks:
   odoo-net:
     driver: bridge
