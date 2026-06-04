@@ -37,7 +37,7 @@ services:
 
   odoo:
     image: odoo:19.0
-    command: ["odoo", "--proxy-mode"]
+    command: ["odoo", "--proxy-mode",  "--admin-passwd=${ODOO_ADMIN_PASSWORD}"]
     depends_on:
       - db
     restart: always
@@ -47,7 +47,7 @@ services:
       HOST: db
       PORT: 5432
       USER: ${POSTGRES_USER}
-      PASSWORD: ${ODOO_DB_PASSWORD}
+      PASSWORD: ${POSTGRES_PASSWORD}
       ADMIN_PASSWORD: ${ODOO_ADMIN_PASSWORD}
     ports:
       - "8069:8069"
